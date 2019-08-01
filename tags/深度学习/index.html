@@ -4,7 +4,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Archives: 2019 - Rookie の Blog</title>
+<title>Tag: 深度学习 - Rookie の Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -12,7 +12,7 @@
     <meta name="description" content="Stay Hungry Stay Humble">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Rookie の Blog">
-<meta property="og:url" content="https://Roooooooooooooooookie.github.io/archives/2019/index.html">
+<meta property="og:url" content="https://Roooooooooooooooookie.github.io/tags/深度学习/index.html">
 <meta property="og:site_name" content="Rookie の Blog">
 <meta property="og:description" content="Stay Hungry Stay Humble">
 <meta property="og:locale" content="zh-Hans">
@@ -149,52 +149,372 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-01T04:41:34.000Z">2019-08-01</time>
-                        <a href="/2019/08/01/Paper精读-Deep-Learning/" class="has-link-black-ter is-size-6">Paper精读 Deep Learning</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Paper精读/">Paper精读</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-31T13:36:02.556Z">2019-07-31</time>
-                        <a href="/2019/07/31/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">深度学习</a></li>
+        </ul>
+        </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-01T04:41:34.000Z">2019-08-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Paper精读/">Paper精读</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 minutes read (About 2831 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/01/Paper精读-Deep-Learning/">Paper精读 Deep Learning</a>
+            
+        </h1>
+        <div class="content">
+            <h4 id="Paper论文精读-–-深度学习综述-Deep-Learning"><a href="#Paper论文精读-–-深度学习综述-Deep-Learning" class="headerlink" title="Paper论文精读 – 深度学习综述(Deep Learning)"></a>Paper论文精读 – 深度学习综述(Deep Learning)</h4><hr>
+<blockquote>
+<p>0.1 论文介绍和作者介绍</p>
+<ul>
+<li>作者: Yann LeCun, Yoshua Bengio, Geoffrey Hinton</li>
+<li>Geoffrey Hinton <ul>
+<li>多伦多大学</li>
+<li>1986 反向传播算法</li>
+<li>1983 发明波尔茨曼机</li>
+<li>2012 对卷积神经网络进行改进<ul>
+<li>Yann LeCun</li>
+<li>1980 发明卷积神经网络</li>
+<li>1980末 首次将卷积神经网络用于手写数字识别</li>
+<li>Yoshua Bengio</li>
+<li>蒙特利尔大学</li>
+<li>1990 将神经网络和概率模型结合在一起</li>
+<li>2000 使用高维词向量来表征自然语言处理</li>
+<li>文章发表时间:2015</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>0.2 论文意义和主要内容</p>
+<ul>
+<li>论文意义: <ul>
+<li>总览深度理论,模型,展开人工智能的新蓝图</li>
+<li>探究深度学习最重要的算法和理论</li>
+</ul>
+</li>
+<li>主要内容<ul>
+<li>概念:<ul>
+<li>深度学习允许多个处理层组成的计算模型来学习具有多个抽象级别的数据表示,这些方法极大地改善了语音识别</li>
+<li>改善了视觉对象识别,物体检测以及药物发现和基因组等其他领域的技术</li>
+</ul>
+</li>
+<li>原理:<ul>
+<li>深度学习通过使用反向传播算法来指示机器应该如何更改其内部参数(用于从前一层的表示计算每个层中的表示)来发现大数据集中的复杂结构<ul>
+<li>应用:</li>
+</ul>
+</li>
+<li>深度卷积网络CNN在处理图像,视频,语音和音频带来了突破</li>
+<li>而循环神经网络对文本和语音等顺序数据进行了彰显</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>0.3 论文结构:</p>
+<ul>
+<li>1.引言 Introduction</li>
+<li>2.监督学习 Supervised Learning (P1-P3)</li>
+<li>3.反向传播算法 BackPropagation</li>
+<li>4.卷积神经网络 CNN Convolutional neural networks</li>
+<li>5.基于深度神经网络的图片理解 Image understanding</li>
+<li>6.分布表示和语言模型 Language processing</li>
+<li>7.循环神经网络 RNN Recurrent neural networks</li>
+<li>8.深度学习的未来 The future</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>0.4 前期知识储备</p>
+<ul>
+<li>了解基本的机器学习算法</li>
+<li>RNN: 循环神经网络,掌握RNN的基本工作原理</li>
+<li>CNN: 了解神经网络的结构和工作原理<br>0.5 课程安排和学习建议</li>
+<li>day1 论文视频讲解</li>
+<li>day2 泛读论文,已经标注了重点</li>
+<li>day3 论文视频讲解</li>
+<li>day4 精读论文,写分析笔记</li>
+<li>day5 论文视频讲解</li>
+<li>day6 作业,撰写博客</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>0.6 学习建议</p>
+<ul>
+<li>精读经典论文</li>
+<li>跟进最新论文</li>
+<li>整理关注论文</li>
+<li>复现领域论文<ul>
+<li>加深对论文的理解</li>
+<li>提高算法的能力</li>
+</ul>
+</li>
+<li>写作论文</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>1.引言</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/01-01.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解释: 深度学习方法是拥有多级表示的学习方法,通过组合简单但非线性的模块来获得,每个模块将表示一个级别,从原始的输入开始转换为更高的表示,稍微更多的抽象层次呢,能够足够地组合这种变换,可以学习非常复杂的功能</span><br><span class="line"></span><br><span class="line">简单的方式理解: 用深度学习的方式和方法,多层的神经网络,来找到一个函数,这个函数能够被学习,这个函数最后能够表示非常复杂的功能比如语音识别,比如图片识别.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1.1 多层神经网络</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-02.png" alt="image"></p>
+<ul>
+<li>Multipe Layers of simple units</li>
+<li>Each units compute a weighted sum of its inputs</li>
+<li>Weighted sum is passed through a non-linear function</li>
+<li>The learning algorithm changes the weights</li>
+<li>激活函数:ReLU <blockquote>
+<p>1.2 深度学习应用领域</p>
+<ul>
+<li>计算机视觉<ul>
+<li>无人驾驶</li>
+<li>图片识别领域</li>
+</ul>
+</li>
+<li>自然语言处理<ul>
+<li>智能搜索</li>
+<li>人机会话等</li>
+</ul>
+</li>
+<li>医学图像分析</li>
+<li>自动驾驶</li>
+<li>制药等</li>
+</ul>
+<p>1.3 深度学习的应用举例</p>
+<ul>
+<li>机器翻译</li>
+<li>下围棋</li>
+<li>目标检测</li>
+<li>人脸识别</li>
+<li>自动驾驶 </li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>2 监督学习(Supervised Learning)</p>
+</blockquote>
+<p><img src=".https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-03.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解释: 我们需要计算一个目标函数来测量出分数与所需分数之间的误差,其实就是距离,然后内部修改其内部的参数减少此错误(BP反向传播),这些可调的参数,我们通常称之为权重,是实数,可以看作是定义机器输入与输出功能的旋钮.在典型的机器学习系统中,可能存在这种可以调节的数以亿计的权重.以及可以训练机器数以亿计的这些示例.</span><br><span class="line"></span><br><span class="line">简单解释:我们有答案,也有数据,需要找到答案和数据之间的规律,而这些规律是什么,就好比调节收音机的旋钮一样,需要去调节参数,使用的是BP算法</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.1 梯度下降算法</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-04.png" alt="image"></p>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-06.png" alt="image"></p>
+<p>直观解释:从山上某点到山谷的过程</p>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-05.png" alt="image"></p>
+<blockquote>
+<p>3 反向传播算法(Backpropagation)(P4-P6)</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-07.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">解释: </span><br><span class="line">    图(a) 仅仅包括2个输入层,2个隐藏层,1个输出层的示例</span><br><span class="line">    图(b) 链式法则</span><br><span class="line">    图(c) 正向传播</span><br><span class="line">    图(d) 反向传播</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>3.1 链式法则(Chain Rule)</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-08.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">链式法则: </span><br><span class="line"> Case1:</span><br><span class="line">   x的微小变化引起y的微小变换,同时y的微小变换有引起z的微小变化</span><br><span class="line"> Case2:</span><br><span class="line">    该case表明链式法则可能不仅仅是影响一个因素,也可能影响多个因素</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>3.2 反向传递(Backward transfer)</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-09.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Forward Pass: 从前向后,是一个计算的过程</span><br><span class="line">Backward Pass: 从后向前,是一个误差传递的过程,误差传递的过程也就是学习的过程</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>4 卷积神经网络 CNN</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-10.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">萨摩耶犬的图像识别</span><br><span class="line">  - rgb三个层次</span><br><span class="line">  - 识别是萨摩耶还是狼狗</span><br><span class="line">  - 信息自下而上的流动</span><br><span class="line">  - 较低级别的特征充当边缘的检测器,并输出每一个图像类别的计算分数</span><br><span class="line">  - 通过不同层来进行特征的获取</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>4.1 什么是CNN?</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-11.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">卷积神经网络的过程:</span><br><span class="line">  1. 预处理的数据用于卷积的计算,加上bias得到局部特征,其卷积核的尺寸和个数对模型的效果有一定的影响</span><br><span class="line">  2. 将第1步的输出结果进行非线性函数的处理,如目前常用的ReLU函数.</span><br><span class="line">  3. 进行池化操作,所谓池化操作实际是取出区域的平均值或者最大值,保留显著的特征,提升对激变的容忍能力</span><br><span class="line">  4. 全连接层,表示对结果的确认.</span><br></pre></td></tr></table></figure>
+
+<p>动画演示如下:<br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-01.gif" alt="image"></p>
+<blockquote>
+<p>5 CNN理解图片(Understanding Image by CNN)</p>
+</blockquote>
+<p>看图说话:<br><img src="./image/01-12.png" alt="IMAGE"></p>
+<blockquote>
+<p>6.分布式表示和语言模型(Language processing)</p>
+</blockquote>
+<blockquote>
+<p>6.1 理解Embedding(Understanding Embedding)</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-13.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">独立热编码: 1个位置代表一个词意,但是不能代表一个词真正的意思,one-hot 会维度很大</span><br><span class="line">Word Embedding: 相近的词汇有相近的意思</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-14.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 句子也可以进行Embedding</span><br><span class="line">- word embedding</span><br><span class="line">- sentence embedding</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>6.2 Word2Vec算法(2013提出)</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-15.png" alt="image"></p>
+<blockquote>
+<ol start="7">
+<li>循环神经网络</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>7.1 理解RNN</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-16.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">循环神经网络的特点如上所述:</span><br><span class="line">   - 时间序列</span><br><span class="line">   - 隐藏层会保持以前的数据</span><br><span class="line">   - 带有存储功能的神经网络</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>7.2 LSTM(Long Short-term Memory)</p>
+</blockquote>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-17.png" alt="image"></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 特殊的RNN,也是门限RNN</span><br><span class="line">2. 主要解决RNN训练过程中梯度消失和梯度爆炸的问题</span><br><span class="line">3. 比普通的RNN更好</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="8">
+<li>未来(Future)</li>
+</ol>
+</blockquote>
+<ul>
+<li>非监督学习<br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-18.png" alt="image"></li>
+<li>强化学习<br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-19.png" alt="image"></li>
+<li>GAN(Generative Aversarial Networks)<br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-20.png" alt="image"></li>
+<li>自监督学习<br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-21.png" alt="image"></li>
+</ul>
+<blockquote>
+<p>问题:</p>
+<ul>
+<li>提高入读门槛,多看顶会论文</li>
+<li>看论文先读摘要,绪论以及结论部分,了解论文的核心内容,契合研究方向进行精度细粒读</li>
+<li>代码复现可取github</li>
+<li>调参技巧:<ul>
+<li>模型参数大于数据量大时,相当于求解一个欠定方程,容易多解,过拟合</li>
+<li>模型参数远小于数据量时,相当于求解超定方程,可能误解,或有解但准确率低,欠拟合</li>
+<li>模型参数如何与数据量做到匹配,是一个工程问题,需要结合问题和数据量多做</li>
+</ul>
+</li>
+<li>如何确定一层卷积使用多少个卷积核<ul>
+<li>卷积核的个数要随具体问题数据量参数大小等决定,没有绝对的方法定多少个</li>
+<li>卷积核其实就是最后用于提取特征的映射函数的参数,随具体训练而定,刚开始随机初始化,后面逐渐进行优化,所以最后不会一模一样<ul>
+<li>为什么CNN可以提取特征?卷积是如何把特征提取出来的?</li>
+<li>CNN是利用卷积操作提取特征,32个卷积核就是学习32种特征,卷积操作其实就是对应内积再求和,不同位置结果不变,具有空间位移不变性,所以可以提取特征</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>激活函数的作用:<ul>
+<li>给神经网络中添加非线性因素,提供了网络的非线性建模能力,通过定义对神经元节点输出的映射,本质上是将输入x映射到(-1,1)或者(0,1)的实数空间,即输入向量与权重的内积再加上bias经过激活函数映射处理之后再做为输出<ul>
+<li>损失函数:</li>
+<li>使用1/2 比较好求导</li>
+<li>自监督学习与无监督学习的本质区别</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>全连接层的作用:<ul>
+<li>最后将前面的隐藏层学习到的”分布式特征表示”映射到样本标记空间</li>
+</ul>
+</li>
+<li>卷积核的本质就是神经元间连接参数的权重</li>
+<li>反向传播本质上是不断优化卷积核里的数值,最终提取到图像的特征</li>
+<li>激活函数在卷积神经网络中的作用:</li>
+</ul>
+<p><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-22.png" alt="image"><br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-23.png" alt="image"><br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-24.png" alt="image"><br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-25.png" alt="image"><br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-26.png" alt="image"><br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-27.png" alt="image"><br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-28.png" alt="image"><br><img src="https://github.com/Roooooooooooooooookie/image-storage-blog/blob/master/01-29.png" alt="image"></p>
+<blockquote>
+<p>词汇:</p>
+<ul>
+<li>transcribe: 转换,转变</li>
+<li>Conventional: 传统</li>
+<li>suppress irrelevant variantions: 抑制无关变量</li>
+<li>repsentaion:表示</li>
+<li>the presence or absence 是否存在</li>
+<li>orientation:方向</li>
+<li>motifs:主题</li>
+<li>spotting:看见,看出,发现</li>
+<li>assemble:集合</li>
+<li>subsequent:随后的</li>
+<li>intricate:错综复杂的</li>
+<li>potential</li>
+<li>molecules:分子</li>
+<li>particle accelerator:粒子加速器</li>
+<li>mutations:突变</li>
+<li>gene expression and disease:基因表达和疾病</li>
+<li>promising:有希望,前途有望的</li>
+<li>sentiment:情绪</li>
+<li>desired category:期望的类别</li>
+<li>a tiny amount:微量</li>
+<li>hilly: 丘陵</li>
+<li>landscape:景观</li>
+<li>stochastic:随机</li>
+<li>elaborate:复杂的,详尽的,精心制作的</li>
+<li>generalization ability:泛化能力</li>
+<li>sensible:理智的</li>
+<li>pratical application:实际应用</li>
+<li>hand-engineered features:手工设计的特征</li>
+<li>carve:雕刻,切成块</li>
+<li>hyperplane:超平面</li>
+<li>illumination:照明</li>
+<li>pitch:音调</li>
+<li>minute:分钟,微小的</li>
+<li>Samoyed:萨摩耶狗</li>
+<li>shallow:肤浅的,浅薄的</li>
+<li>distort:歪曲</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>注: 图片均来自深度之眼</p>
+</blockquote>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
 
 
 </div>
