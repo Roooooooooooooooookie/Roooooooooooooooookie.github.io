@@ -51,11 +51,11 @@ textarea {
   }
 }
 .tag.is-grey {
-  background: #e7e7e7;
+  background: #00a99d;
 }
 .card {
   border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px #fff, 0 0 1px #fff;
 }
 .card + .card,
 .card + .column-right-shadow {
@@ -80,7 +80,7 @@ img.thumbnail {
   max-height: 1.75rem;
 }
 .navbar-main {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px #fff;
 }
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
@@ -109,7 +109,7 @@ img.thumbnail {
   padding: 1.25rem 0.75rem;
 }
 .navbar-main .navbar-item.is-active {
-  color: #3273dc;
+  color: #00a99d;
   background-color: transparent;
 }
 @media screen and (max-width: 1087px) {
@@ -126,6 +126,7 @@ img.thumbnail {
 }
 .footer {
   background: #fff;
+  box-shadow: 0 4px 10px #fff;
 }
 .footer .field .button {
   background: transparent;
@@ -179,7 +180,7 @@ img.thumbnail {
   width: 9px;
   height: 9px;
   top: 1.3rem;
-  background: #dbdbdb;
+  background: #00a99d;
   border-radius: 50%;
 }
 .timeline .media:first-child:before {
@@ -370,6 +371,7 @@ img.thumbnail {
 }
 .content h1 {
   font-size: 1.75em;
+  color: #00a99c;
 }
 .content h2 {
   font-size: 1.5em;
@@ -422,7 +424,7 @@ figure.highlight pre .line {
 }
 figure.highlight figcaption,
 figure.highlight .gutter {
-  background: rgba(200,200,200,0.15);
+  background: #00a99d;
 }
 figure.highlight figcaption {
   padding: 0.3em 0.75em;
