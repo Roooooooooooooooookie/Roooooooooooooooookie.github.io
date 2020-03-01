@@ -18,7 +18,7 @@
 <meta property="og:description" content="作为渗透测试的第一篇文章,本文主要将带领你进行基础的渗透测试学习,若想要进一步学习可参考更多渗透测试以及黑客入侵与防御书籍">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/29/36aAgK.jpg">
-<meta property="og:updated_time" content="2020-03-01T00:56:24.385Z">
+<meta property="og:updated_time" content="2020-03-01T01:00:09.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kali 渗透测试(入门篇)">
 <meta name="twitter:description" content="作为渗透测试的第一篇文章,本文主要将带领你进行基础的渗透测试学习,若想要进一步学习可参考更多渗透测试以及黑客入侵与防御书籍">
@@ -1371,12 +1371,13 @@ var _hmt = _hmt || [];
 </li>
 <li>基本操作<ul>
 <li>way1: nc -nv [your ip address]</li>
-<li>way2:python socket:socket 模块用于连接网络服务 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">banner=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">banner.connect((&quot;www.baidu.com&quot;,21))</span><br><span class="line">banner.recv(4096)   # 接收数据大小</span><br><span class="line">banner.close()</span><br><span class="line">exit()</span><br></pre></td></tr></table></figure>
-</li>
+<li>way2:python socket:socket 模块用于连接网络服务 </li>
 </ul>
 </li>
 </ul>
 </blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">banner=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">banner.connect((&quot;www.baidu.com&quot;,21))</span><br><span class="line">banner.recv(4096)   # 接收数据大小</span><br><span class="line">banner.close()</span><br><span class="line">exit()</span><br></pre></td></tr></table></figure>
+
 <pre><code>- Banner不允许抓取,recv无返回将挂起
 - way3: 
     - dmitry -p www.baidu.com
