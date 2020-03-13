@@ -18,7 +18,7 @@
 <meta property="og:description" content="本文主要为Neural Architecture Search with reinforcement learning的详细解读">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/03/13/mJEiU3KRsWYneuo.jpg">
-<meta property="og:updated_time" content="2020-03-13T12:59:24.593Z">
+<meta property="og:updated_time" content="2020-03-13T13:14:46.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【论文解读】 Neural Architecture Search with reinforcement learning">
 <meta name="twitter:description" content="本文主要为Neural Architecture Search with reinforcement learning的详细解读">
@@ -192,7 +192,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    28 分钟 读完 (大约 4212 个字)
+                    28 分钟 读完 (大约 4200 个字)
                 </span>
                 
                 
@@ -212,8 +212,7 @@ var _hmt = _hmt || [];
         <div class="content">
             <p>本文主要为Neural Architecture Search with reinforcement learning的详细解读</p>
 <a id="more"></a>
-
-<h3 id="【论文解读】-Neural-Architecture-Search-with-reinforcement-learning"><a href="#【论文解读】-Neural-Architecture-Search-with-reinforcement-learning" class="headerlink" title="【论文解读】 Neural Architecture Search with reinforcement learning"></a>【论文解读】 Neural Architecture Search with reinforcement learning</h3><hr>
+<hr>
 <p>论文作者：Barret Zhph*,Quoc V.Le [来自于 Google Brain]</p>
 <p>论文标题：Neural Architecture Search with reinforcement learning/(使用强化学习进行神经网络架构搜索)</p>
 <p>论文会议：ILCR 2017</p>
@@ -564,61 +563,57 @@ var _hmt = _hmt || [];
             <h3 class="menu-label">
                 目录
             </h3>
-            <ul class="menu-list"><ul class="menu-list"><li>
-        <a class="is-flex" href="#【论文解读】-Neural-Architecture-Search-with-reinforcement-learning">
-        <span class="has-mr-6">1.1</span>
-        <span>【论文解读】 Neural Architecture Search with reinforcement learning</span>
-        </a></li></ul><li>
+            <ul class="menu-list"><li>
         <a class="is-flex" href="#1-概述与介绍">
-        <span class="has-mr-6">2</span>
+        <span class="has-mr-6">1</span>
         <span>1. 概述与介绍</span>
         </a></li><li>
         <a class="is-flex" href="#2-相关工作">
-        <span class="has-mr-6">3</span>
+        <span class="has-mr-6">2</span>
         <span>2. 相关工作</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Point1-超参数优化">
-        <span class="has-mr-6">3.1</span>
+        <span class="has-mr-6">2.1</span>
         <span>Point1: 超参数优化</span>
         </a></li><li>
         <a class="is-flex" href="#Point2-现代神经进化算法">
-        <span class="has-mr-6">3.2</span>
+        <span class="has-mr-6">2.2</span>
         <span>Point2: 现代神经进化算法</span>
         </a></li><li>
         <a class="is-flex" href="#Point3-神经架构搜索">
-        <span class="has-mr-6">3.3</span>
+        <span class="has-mr-6">2.3</span>
         <span>Point3: 神经架构搜索</span>
         </a></li><li>
         <a class="is-flex" href="#Point4-idea-的产生以及我们做了什么">
-        <span class="has-mr-6">3.4</span>
+        <span class="has-mr-6">2.4</span>
         <span>Point4: idea 的产生以及我们做了什么!</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#3-方法-METHODS">
-        <span class="has-mr-6">4</span>
+        <span class="has-mr-6">3</span>
         <span>3. 方法 METHODS</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Section-1-使用-RNN-作为控制器来生成模型描述">
-        <span class="has-mr-6">4.1</span>
+        <span class="has-mr-6">3.1</span>
         <span>Section 1. 使用 RNN 作为控制器来生成模型描述</span>
         </a></li><li>
         <a class="is-flex" href="#Section-2-使用强化学习的思想进行训练">
-        <span class="has-mr-6">4.2</span>
+        <span class="has-mr-6">3.2</span>
         <span>Section 2. 使用强化学习的思想进行训练</span>
         </a></li><li>
         <a class="is-flex" href="#Section-3-使用跳跃连接和其他-Layer-Types-来提升架构的复杂度">
-        <span class="has-mr-6">4.3</span>
+        <span class="has-mr-6">3.3</span>
         <span>Section 3: 使用跳跃连接和其他 Layer Types 来提升架构的复杂度</span>
         </a></li><li>
         <a class="is-flex" href="#Section-4-生成-RECURRENT-CELL-架构">
-        <span class="has-mr-6">4.4</span>
+        <span class="has-mr-6">3.4</span>
         <span>Section 4: 生成 RECURRENT CELL 架构</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#4-实验与结果">
-        <span class="has-mr-6">5</span>
+        <span class="has-mr-6">4</span>
         <span>4. 实验与结果</span>
         </a></li><li>
         <a class="is-flex" href="#5-结论与总结">
-        <span class="has-mr-6">6</span>
+        <span class="has-mr-6">5</span>
         <span>5.结论与总结</span>
         </a></li></ul>
         </div>
