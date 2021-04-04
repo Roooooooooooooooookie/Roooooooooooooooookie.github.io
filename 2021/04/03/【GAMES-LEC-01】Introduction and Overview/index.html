@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview - 止歌的博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="本文主要为GAMES201高质量实时渲染LEC-01的NOTES">
+<meta name="keywords" content="Real-Time Rendering,图形学,渲染管线,SIGGRAPH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview">
+<meta property="og:url" content="https://Wheeeeeeeeels.github.io/2021/04/03/【GAMES-LEC-01】Introduction and Overview/index.html">
+<meta property="og:site_name" content="止歌的博客">
+<meta property="og:description" content="本文主要为GAMES201高质量实时渲染LEC-01的NOTES">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2021/04/05/cXhlImsOnzEYCWe.jpg">
+<meta property="og:updated_time" content="2021-04-04T19:07:57.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview">
+<meta name="twitter:description" content="本文主要为GAMES201高质量实时渲染LEC-01的NOTES">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/05/cXhlImsOnzEYCWe.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?06673051142633c744c4b55099236bf8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">  
+
+</head>
+
+
+
+
+<body class="is-3-column">
+
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+                <a class="navbar-item" href="/photos">相册</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/Wheeeeeeeeels">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+
+   
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://i.loli.net/2021/04/05/cXhlImsOnzEYCWe.jpg" alt="【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-04-03T02:45:34.000Z">2021-04-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/计算机图形学-渲染/">计算机图形学-渲染</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1402 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview
+            
+        </h1>
+        <div class="content">
+            <p>本文主要为GAMES201高质量实时渲染LEC-01的NOTES</p>
+<a id="more"></a>
+<hr>
+<h2 id="GAMES202-高质量实时渲染-Real-Time-High-Quality-Rendering"><a href="#GAMES202-高质量实时渲染-Real-Time-High-Quality-Rendering" class="headerlink" title="GAMES202 高质量实时渲染(Real-Time High Quality Rendering)"></a>GAMES202 高质量实时渲染(Real-Time High Quality Rendering)</h2><h4 id="Lecture-1-Introduction-and-Overview"><a href="#Lecture-1-Introduction-and-Overview" class="headerlink" title="Lecture 1 Introduction and Overview"></a>Lecture 1 Introduction and Overview</h4><h3 id="1-1-关于实时高质量渲染的几个基本概念"><a href="#1-1-关于实时高质量渲染的几个基本概念" class="headerlink" title="1-1 关于实时高质量渲染的几个基本概念"></a>1-1 关于实时高质量渲染的几个基本概念</h3><hr>
+<h5 id="实时-Real-Time"><a href="#实时-Real-Time" class="headerlink" title="实时($Real-Time$)"></a>实时($Real-Time$)</h5><ul>
+<li>$Speed:$ 一般指的是超过30 FPS(Frame per second),在虚拟或者增强现实中甚至一般需要达到90帧。而略低于实时渲染速度的称为Interactive FPS</li>
+</ul>
+<h5 id="高质量-High-Quality"><a href="#高质量-High-Quality" class="headerlink" title="高质量($High$ $Quality$)"></a>高质量($High$ $Quality$)</h5><ul>
+<li>$Realism:$ 采用高级的方式使渲染尽可能的真实</li>
+<li>$Dependability:$ 高质量需要保证渲染的过程中一直都是正确的(或者尽可能的近似),无法接受任何不可以控制的失败</li>
+</ul>
+<h5 id="渲染-Rendering"><a href="#渲染-Rendering" class="headerlink" title="渲染($Rendering$)"></a>渲染($Rendering$)</h5><h6 id="什么是渲染"><a href="#什么是渲染" class="headerlink" title="什么是渲染?"></a>什么是<a href="https://www.zhihu.com/question/31971846/answer/367279624" target="_blank" rel="noopener">渲染</a>?</h6><ul>
+<li>如果你看过《<a href="https://book.douban.com/subject/2567698/" target="_blank" rel="noopener">三体</a>》那么你可以理解为是一种二向箔(降维打击)，也就是将高维度的信息转换为低维度的信息,而此处就是指将3D的场景转换为2D的图片</li>
+</ul>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/04/304b0d709d52366d.gif" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-0 来自三体迷的二向箔图鉴</center> 
+
+<ul>
+<li>通过计算的方式来模拟光线是如何从光源发射出来弹射到人的眼睛当中(也可以理解为模拟虚拟摄像机看到的虚拟场景)</li>
+</ul>
+<p><a href="https://imgtu.com/i/cMZZ5D" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/04/05/cMZZ5D.png" alt="cMZZ5D.png"></a></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-1 渲染示意图</center> 
+
+<h6 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h6><p>渲染广泛应用在建筑，游戏，模拟，电影或电视视觉效果以及设计可视化中.一些渲染图片如下图所示</p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/04/7c2d5893455d9eaf.jpg" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-2 《爱,死亡和机器人》</center> 
+
+<p><img src="https://ftp.bmp.ovh/imgs/2021/04/e96bfb5d1f917087.jpg" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-3 电影:流浪地球</center> 
+
+<h3 id="1-2-本系列讨论的一些话题"><a href="#1-2-本系列讨论的一些话题" class="headerlink" title="1-2 本系列讨论的一些话题"></a>1-2 本系列讨论的一些话题</h3><hr>
+<h5 id="四个主部分"><a href="#四个主部分" class="headerlink" title="四个主部分:"></a>四个主部分:</h5><table>
+<thead>
+<tr>
+<th>阴影</th>
+<th>全局光照</th>
+<th>基于物理的着色</th>
+<th>实时光线追踪</th>
+</tr>
+</thead>
+</table>
+<h6 id="PartA-Shadow-and-Environment-Mapping-阴影与环境光"><a href="#PartA-Shadow-and-Environment-Mapping-阴影与环境光" class="headerlink" title="PartA: Shadow and Environment Mapping(阴影与环境光)"></a>PartA: Shadow and Environment Mapping(阴影与环境光)</h6><p><img src="https://ftp.bmp.ovh/imgs/2021/04/7d369d1343b03759.png" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-4 阴影与环境光 </center> 
+
+<h6 id="PartB-Interactive-Global-llumination-Techniques"><a href="#PartB-Interactive-Global-llumination-Techniques" class="headerlink" title="PartB: Interactive Global llumination Techniques"></a>PartB: Interactive Global llumination Techniques</h6><p><img src="https://ftp.bmp.ovh/imgs/2021/04/78346d828fb5932d.png" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-5 论文:Interactive Global Illumination in Dynamic Scenes </center> 
+
+<h6 id="PartC-Precomputed-Radiance-Transfer-PRT"><a href="#PartC-Precomputed-Radiance-Transfer-PRT" class="headerlink" title="PartC:Precomputed Radiance Transfer(PRT)"></a><a href="https://blog.csdn.net/toughbro/article/details/5045163" target="_blank" rel="noopener">PartC:Precomputed Radiance Transfer(PRT)</a></h6><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PRT技术到底是什么呢？PRT技术能够实时重现面积光源下3D模型的全局光照效果。它通过对复杂的光线相互作用进行预计算来节省时间，提供了一种动态改变光照环境的方法。PRT本质上是通过入射光的线性组合来计算每个点的光照，用球面调和函数可以编码这些数据。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ftp.bmp.ovh/imgs/2021/04/63aef901666e87e4.png" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-6 论文:Precomputed Radiance Transfer for Real-Time Rendering
+in Dynamic, Low-Frequency Lighting Environments </center> 
+
+<h6 id="PartD-Real-Time-Ray-Tracing"><a href="#PartD-Real-Time-Ray-Tracing" class="headerlink" title="PartD:Real-Time Ray Tracing"></a>PartD:Real-Time Ray Tracing</h6><p><a href="https://imgtu.com/i/cMmvUf" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/04/05/cMmvUf.gif" alt="cMmvUf.gif"></a></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-7 实时光线追踪:Prosche Demo</center> 
+
+
+<h6 id="PartE-Participating-Media-Rendering-Image-Space-Effects-etc"><a href="#PartE-Participating-Media-Rendering-Image-Space-Effects-etc" class="headerlink" title="PartE:Participating Media Rendering,Image Space Effects,etc"></a>PartE:Participating Media Rendering,Image Space Effects,etc</h6><p><img src="https://ftp.bmp.ovh/imgs/2021/04/0db35aded3e03cd6.png" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-8 Paper: A Survey on Participating Media Rendering Techniques</center> 
+
+<h6 id="PartF-Non-Photorealistic-Rendering-NPR-非真实感渲染"><a href="#PartF-Non-Photorealistic-Rendering-NPR-非真实感渲染" class="headerlink" title="PartF:Non-Photorealistic Rendering(NPR),非真实感渲染"></a>PartF:Non-Photorealistic Rendering(NPR),非真实感渲染</h6><p><img src="https://ftp.bmp.ovh/imgs/2021/04/60d09b015928d753.png" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-9 实时光线追踪:Prosche Demo</center> 
+
+<p><img src="https://ftp.bmp.ovh/imgs/2021/04/aece83f0f18fb6e5.png" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-10《原神》与《塞尔达传说:旷野之息》</center> 
+
+<h6 id="PartF-Antialiasing-and-supersampling-抗锯齿与超分辨率采样"><a href="#PartF-Antialiasing-and-supersampling-抗锯齿与超分辨率采样" class="headerlink" title="PartF:Antialiasing and supersampling(抗锯齿与超分辨率采样)"></a>PartF:Antialiasing and supersampling(抗锯齿与超分辨率采样)</h6><table>
+<thead>
+<tr>
+<th>DLSS</th>
+<th>TAA</th>
+<th>MSAA</th>
+<th>FXAA</th>
+</tr>
+</thead>
+</table>
+<p><a href="https://imgtu.com/i/cMmLDI" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/04/05/cMmLDI.gif" alt="cMmLDI.gif"></a></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1-11 DLSS 2.0技术,深度学习超级采样 </center> 
+
+<h3 id="1-3-课程初始杂谈"><a href="#1-3-课程初始杂谈" class="headerlink" title="1-3 课程初始杂谈"></a>1-3 课程初始杂谈</h3><h6 id="UE5-demo"><a href="#UE5-demo" class="headerlink" title="UE5 demo"></a>UE5 demo</h6><p><a href="https://imgtu.com/i/cMnFrn" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/04/05/cMnFrn.gif" alt="cMnFrn.gif"></a></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline"> 图1-12 Unreal Engine 5 Demo </center> 
+
+<h6 id="本系列没有的内容"><a href="#本系列没有的内容" class="headerlink" title="本系列没有的内容"></a>本系列没有的内容</h6><ul>
+<li>3D建模,UE4的使用</li>
+<li>离线渲染</li>
+<li>Neural Rendering:神经网络(Ai!!!)无法做到Real-Time,High-Quality两件事情</li>
+<li>OpenGL的使用:参考Games101</li>
+<li>Scene/shader 优化</li>
+<li>逆向Shader</li>
+<li>高性能计算:e.g.CUDA编程</li>
+</ul>
+<h6 id="本系列的学习方法"><a href="#本系列的学习方法" class="headerlink" title="本系列的学习方法"></a>本系列的学习方法</h6><ul>
+<li>理解科学与技术的不同<ul>
+<li>科学不等于技术，科学等于知识</li>
+<li>技术是将科学转换为产品的技能</li>
+<li>科学与技术的地位是相同的</li>
+</ul>
+</li>
+<li>$实时渲染=离线渲染的简化+系统的工程$</li>
+<li>现象:实时渲染上工业界领先于学术界,且存在行业内部相对闭源</li>
+<li>要求: 基本的OpenGL Shader Language(GLSL)</li>
+<li>书籍: 主要是SIGGRAPH课程与引擎设计文档</li>
+</ul>
+<p><img src="./images/1-10.png" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline"> 图1-13 NeRF: Representing Scenes as
+Neural Radiance Fields for View Synthesis
+</center> 
+
+<h3 id="1-4-技术与算法的里程碑"><a href="#1-4-技术与算法的里程碑" class="headerlink" title="1-4 技术与算法的里程碑"></a>1-4 技术与算法的里程碑</h3><ul>
+<li>可编程渲染管线(20年前)</li>
+</ul>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/04/9577bbbf255830de.png" alt></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline"> 图1-14 可编程渲染管线</center>
+
+<ul>
+<li>预计算理论(15年前)</li>
+<li>Interactive级别的光线追踪(8-10年前:CUDA+OptiX)</li>
+</ul>
+<blockquote>
+<p>补充</p>
+</blockquote>
+<h5 id="版权保护-以上所有的图片若侵则删之"><a href="#版权保护-以上所有的图片若侵则删之" class="headerlink" title="版权保护:以上所有的图片若侵则删之"></a>版权保护:以上所有的图片若侵则删之</h5><h5 id="补充阅读资料"><a href="#补充阅读资料" class="headerlink" title="补充阅读资料:"></a>补充阅读资料:</h5><ul>
+<li>[0] <a href="http://games-cn.org/forums/forum/games202/" target="_blank" rel="noopener">Games202课程主页</a></li>
+<li>[1] <a href="http://www.adriancourreges.com/blog/2015/11/02/gta-v-graphics-study/" target="_blank" rel="noopener">GTA-V渲染技术</a></li>
+<li>[2] <a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">学习OpenGL</a>与光线追踪入门:<a href="https://github.com/ssloy/tinyrenderer" target="_blank" rel="noopener">tinyrenderer</a>,<a href="https://raytracing.github.io/" target="_blank" rel="noopener">Ray Tracing in One Weekend</a></li>
+<li>[3] <a href="https://jerkwin.github.io/filamentcn/" target="_blank" rel="noopener">基于物理的实时渲染器:Filament</a></li>
+<li>[4] <a href="https://www.raywenderlich.com/books/metal-by-tutorials/v2.0" target="_blank" rel="noopener">Metal:Metal by Tutorials</a>(Mac专属),<a href="https://developer.apple.com/metal/sample-code/" target="_blank" rel="noopener">Metal Sample Code</a></li>
+<li>[5] <a href="https://zh.wikipedia.org/wiki/Vulkan" target="_blank" rel="noopener">Vulkan</a>:<a href="https://github.com/KhronosGroup/Vulkan-Samples" target="_blank" rel="noopener">Vulkan样例</a>,Linux适用</li>
+<li>[6] <a href="https://book.douban.com/subject/30426701/" target="_blank" rel="noopener">DX12 3D 游戏开发实战</a></li>
+</ul>
+<h5 id="论文阅读清单"><a href="#论文阅读清单" class="headerlink" title="论文阅读清单"></a>论文阅读清单</h5><ul>
+<li>[1] <a href="https://cseweb.ucsd.edu/~ravir/6160-fall04/papers/p537-tole.pdf" target="_blank" rel="noopener">Tole, P. ,  Pellacini, F. ,  Walter, B. , &amp;  Greenberg, D. P. . (2002). Interactive global illumination in dynamic scenes. Acm Transactions on Graphics, 21(3), 537-546.</a></li>
+<li>[2] <a href="https://sci-hub.se/10.1145/566654.566612" target="_blank" rel="noopener">Sloan, P. . (2002). Precomputed radiance transfer for real-time rendering in dynamic, low-frequency lighting environments. SIGGRAPH2002.</a></li>
+<li>[3] <a href="http://www0.cs.ucl.ac.uk/staff/j.kautz/PRTCourse/" target="_blank" rel="noopener">Precomputed Radiance Transfer: Theory and Practice,Siggraph 2005 Course</a></li>
+<li>[4] Cerezo, E. ,  Perez, F. ,  Pueyo, X. ,  Seron, F. J. , &amp;  Sillion, F. X. . (2005). A survey on participating media rendering techniques. Vis Comput, 21(5), 303-328.</li>
+<li>[5]<a href="https://sci-hub.st/10.1007/s00371-005-0287-1" target="_blank" rel="noopener"> Cerezo E ,  Perez F ,  Pueyo X , et al. A Survey on Participating Media Rendering Techniques[J]. Vis Comput, 2005, 21(5):303-328.</a></li>
+<li>[6]<a href="https://arxiv.org/pdf/2003.08934.pdf" target="_blank" rel="noopener">Mildenhall, B. , et al. “NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis.” European Conference on Computer Vision Springer, Cham, 2020.</a></li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Real-Time-Rendering/">Real-Time Rendering</a>, <a class="has-link-grey -link" href="/tags/SIGGRAPH/">SIGGRAPH</a>, <a class="has-link-grey -link" href="/tags/图形学/">图形学</a>, <a class="has-link-grey -link" href="/tags/渲染管线/">渲染管线</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+
+        
+    </div>
+</div>
+
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zfb.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>作者:  </strong>止歌
+          </li>
+          <li class="post-copyright-link">
+          <strong>文章连结:  </strong>
+          <a href="/2021/04/03/【GAMES-LEC-01】Introduction and Overview/" target="_blank" title="【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview">https://Wheeeeeeeeels.github.io/2021/04/03/【GAMES-LEC-01】Introduction and Overview/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本网志所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处!
+          </li>
+        </ul>
+
+<br>
+<br>
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/04/04/【GAMES-LEC-02】Recap of CG Basics/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">【GAMES202-LEC-02】高质量实时渲染 Recap of CG Basics</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/13/【论文解读】使用强化学习进行NAS/">
+                <span class="level-item">【论文解读】 Neural Architecture Search with reinforcement learning</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '4n2wXiCcKdC6aEpTRBn3gdk2-gzGzoHsz',
+        app_key: '8WEnpH2I6RrjhXPAyex9FuSH',
+        placeholder: '发表您的建议,让我们一起交流,共同进步吧'
+    });
+</script>
+
+    </div>
+</div>
+
+
+
+
+</div>
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/head1.jpg" alt="止歌">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        止歌
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Explosion-stack Engineer | Algorithm Dog  CVer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>China 中国</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        22
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Wheeeeeeeeels" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/Wheeeeeeeeels">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Zhihu" href="https://www.zhihu.com/people/ghjv/activities">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#GAMES202-高质量实时渲染-Real-Time-High-Quality-Rendering">
+        <span class="has-mr-6">1</span>
+        <span>GAMES202 高质量实时渲染(Real-Time High Quality Rendering)</span>
+        </a><ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#Lecture-1-Introduction-and-Overview">
+        <span class="has-mr-6">1.1.1</span>
+        <span>Lecture 1 Introduction and Overview</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#1-1-关于实时高质量渲染的几个基本概念">
+        <span class="has-mr-6">1.2</span>
+        <span>1-1 关于实时高质量渲染的几个基本概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-2-本系列讨论的一些话题">
+        <span class="has-mr-6">1.3</span>
+        <span>1-2 本系列讨论的一些话题</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-3-课程初始杂谈">
+        <span class="has-mr-6">1.4</span>
+        <span>1-3 课程初始杂谈</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-4-技术与算法的里程碑">
+        <span class="has-mr-6">1.5</span>
+        <span>1-4 技术与算法的里程碑</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/04/04/【GAMES-LEC-02】Recap of CG Basics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.loli.net/2021/04/05/FImguykj9iQCPtW.jpg" alt="【GAMES202-LEC-02】高质量实时渲染 Recap of CG Basics">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-04-04T02:45:34.000Z">2021-04-04</time></div>
+                    <a href="/2021/04/04/【GAMES-LEC-02】Recap of CG Basics/" class="has-link-black-ter is-size-6">【GAMES202-LEC-02】高质量实时渲染 Recap of CG Basics</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/计算机图形学-渲染/">计算机图形学-渲染</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/04/03/【GAMES-LEC-01】Introduction and Overview/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.loli.net/2021/04/05/cXhlImsOnzEYCWe.jpg" alt="【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-04-03T02:45:34.000Z">2021-04-03</time></div>
+                    <a href="/2021/04/03/【GAMES-LEC-01】Introduction and Overview/" class="has-link-black-ter is-size-6">【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/计算机图形学-渲染/">计算机图形学-渲染</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/13/【论文解读】使用强化学习进行NAS/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.loli.net/2020/03/13/mJEiU3KRsWYneuo.jpg" alt="【论文解读】 Neural Architecture Search with reinforcement learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T11:45:34.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/【论文解读】使用强化学习进行NAS/" class="has-link-black-ter is-size-6">【论文解读】 Neural Architecture Search with reinforcement learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/论文解读/">论文解读</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/13/【论文调研】IJCAI-2019/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.loli.net/2020/03/13/CMxLgzkAaKNFpSw.png" alt="【论文调研】IJCAI-2019 论文投稿与录用调研报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T11:41:34.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/【论文调研】IJCAI-2019/" class="has-link-black-ter is-size-6">【论文调研】IJCAI-2019 论文投稿与录用调研报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/论文调研/">论文调研</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/01/【论文解读】深度学习综述/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://s2.ax1x.com/2020/02/29/36BNQ0.jpg" alt="【论文解读】深度学习综述">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-01T04:41:34.000Z">2019-08-01</time></div>
+                    <a href="/2019/08/01/【论文解读】深度学习综述/" class="has-link-black-ter is-size-6">【论文解读】深度学习综述</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/论文解读/">论文解读</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/信息安全/">
+            <span class="level-start">
+                <span class="level-item">信息安全</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/信息安全/渗透测试/">
+            <span class="level-start">
+                <span class="level-item">渗透测试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/计算机图形学-渲染/">
+            <span class="level-start">
+                <span class="level-item">计算机图形学-渲染</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/论文解读/">
+            <span class="level-start">
+                <span class="level-item">论文解读</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/论文调研/">
+            <span class="level-start">
+                <span class="level-item">论文调研</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://google.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Google</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">google.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://baidu.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Baidu</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">baidu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://leetcode-cn.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">LeetCode</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">leetcode-cn.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://pintia.cn/problem-sets?tab=0" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PAT</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">pintia.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://codeforces.com/blog/entry/57282" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">CodeForces</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">codeforces.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://oi-wiki.org/basic/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">NOIP</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">oi-wiki.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://me.csdn.net/qq_33592583" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">me.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.luogu.com.cn/problem/list" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">LuoGo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.luogu.com.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/AutoML/" style="font-size: 10px;">AutoML</a> <a href="/tags/IJCAI/" style="font-size: 10px;">IJCAI</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/OpenGL/" style="font-size: 10px;">OpenGL</a> <a href="/tags/RNN/" style="font-size: 10px;">RNN</a> <a href="/tags/Real-Time-Rendering/" style="font-size: 20px;">Real-Time Rendering</a> <a href="/tags/SIGGRAPH/" style="font-size: 10px;">SIGGRAPH</a> <a href="/tags/Shader/" style="font-size: 10px;">Shader</a> <a href="/tags/会议投稿/" style="font-size: 10px;">会议投稿</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/关系抽取/" style="font-size: 10px;">关系抽取</a> <a href="/tags/图卷积网络/" style="font-size: 10px;">图卷积网络</a> <a href="/tags/图形学/" style="font-size: 20px;">图形学</a> <a href="/tags/强化学习/" style="font-size: 10px;">强化学习</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 10px;">深度学习</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/渲染管线/" style="font-size: 20px;">渲染管线</a> <a href="/tags/知识图谱/" style="font-size: 10px;">知识图谱</a> <a href="/tags/自然语言处理/" style="font-size: 10px;">自然语言处理</a> <a href="/tags/计算机视觉/" style="font-size: 10px;">计算机视觉</a> <a href="/tags/链接预测/" style="font-size: 10px;">链接预测</a>
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/AutoML/">
+                        <span class="tag">AutoML</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/IJCAI/">
+                        <span class="tag">IJCAI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Machine-Learning/">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/OpenGL/">
+                        <span class="tag">OpenGL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RNN/">
+                        <span class="tag">RNN</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Real-Time-Rendering/">
+                        <span class="tag">Real-Time Rendering</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SIGGRAPH/">
+                        <span class="tag">SIGGRAPH</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Shader/">
+                        <span class="tag">Shader</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/会议投稿/">
+                        <span class="tag">会议投稿</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/信息安全/">
+                        <span class="tag">信息安全</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/关系抽取/">
+                        <span class="tag">关系抽取</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/图卷积网络/">
+                        <span class="tag">图卷积网络</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/图形学/">
+                        <span class="tag">图形学</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/强化学习/">
+                        <span class="tag">强化学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/机器学习/">
+                        <span class="tag">机器学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/深度学习/">
+                        <span class="tag">深度学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/渗透测试/">
+                        <span class="tag">渗透测试</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/渲染管线/">
+                        <span class="tag">渲染管线</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/知识图谱/">
+                        <span class="tag">知识图谱</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/自然语言处理/">
+                        <span class="tag">自然语言处理</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/计算机视觉/">
+                        <span class="tag">计算机视觉</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/链接预测/">
+                        <span class="tag">链接预测</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+<!-- 粘贴的部分 -->
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="【GAMES202-LEC-01】高质量实时渲染 Introduction and Overview" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 止歌&nbsp;
+                Powered by <a href="https://www.adaboost.cn/" target="_blank">rookie</a> & <a href="https://www.adaboost.cn/" target="_blank">wuhao</a>
+<br>
+All Rights Reserved 京ICP1098765号
+   
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("08/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+            setInterval("createtime()",250);
+            </script>
+<br>
+
+  Total <span id="busuanzi_value_site_pv"></span> views.
+  |  您是第 <span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span> 个小伙伴
+  |  <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Hits
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+
+
+
+<script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-1 count=" 99" src="https://cdnjs.cloudflare.com/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script>
+<!--
+<script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/snow.js"><\/script>');
+      }
+</script>-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<script type="text/javascript" src="/js/click_show_text.js"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
